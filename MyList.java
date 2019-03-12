@@ -22,9 +22,12 @@ public class MyList<E> {
     public void add(int index , E e) {
         if(index < element.length && index >=0 ) {
             ensureCapa();
-            for (int i = index + 1 ; i < element.length ; i++) {
-                Object temp1 = element[i];
-                element[i] = temp1;
+            Object temp1 = element[index];
+            for (int i = index ; i < size ; i++) {
+                Object temp2 = element[i+1];
+                element[i+1] = temp1;
+                temp1 = temp2;
+
             }
             element[index] = e;
             size++;
@@ -56,10 +59,9 @@ public class MyList<E> {
         return index;
     }
     public  boolean add(E e) {
-
         ensureCapa();
-        size++;
         element[size] = e;
+        size++;
         return true;
     }
     public E get( int index) {
